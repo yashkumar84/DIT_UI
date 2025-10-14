@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git & GitHub - Hinglish Mein Samjho!</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        overflow-x: hidden;
+        color: #fff;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        text-align: center;
+        padding: 40px 20px;
+        animation: slideDown 1s ease-out;
+      }
+
+      .header h1 {
+        font-size: 4em;
+        margin-bottom: 20px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff6b6b;
+        }
+        50% {
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff6b6b;
+        }
+      }
+
+      .shayari {
+        font-size: 1.5em;
+        font-style: italic;
+        margin: 20px 0;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        animation: fadeIn 2s ease-in;
+      }
+
+      .section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        margin: 30px 0;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        color: #333;
+        animation: slideUp 0.8s ease-out;
+      }
+
+      .section h2 {
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        color: #2c3e50;
+        border-bottom: 4px solid #3498db;
+        padding-bottom: 10px;
+        animation: slideRight 1s ease-out;
+      }
+
+      .visual-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 20px 0;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .visual-box:hover {
+        transform: scale(1.02);
+      }
+
+      .git-workflow {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 30px 0;
+      }
+
+      .workflow-step {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 15px;
+        width: 200px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        animation: bounce 2s ease-in-out infinite;
+        transition: all 0.3s ease;
+      }
+
+      .workflow-step:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .workflow-step:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .workflow-step:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .workflow-step:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .arrow {
+        font-size: 3em;
+        color: #3498db;
+        animation: moveRight 1.5s ease-in-out infinite;
+      }
+
+      @keyframes moveRight {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(20px);
+        }
+      }
+
+      .joke-box {
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        border-radius: 15px;
+        padding: 25px;
+        margin: 20px 0;
+        border-left: 5px solid #e74c3c;
+        color: #2c3e50;
+        font-size: 1.2em;
+        animation: shake 3s ease-in-out infinite;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(1deg);
+        }
+        75% {
+          transform: rotate(-1deg);
+        }
+      }
+
+      .tree-diagram {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 30px 0;
+      }
+
+      .branch {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+        min-width: 150px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-in;
+      }
+
+      .commit {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        animation: pulse 2s ease-in-out infinite;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      .analogy {
+        background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+        border-radius: 15px;
+        padding: 25px;
+        margin: 20px 0;
+        border: 3px dashed #e74c3c;
+        color: #2c3e50;
+        font-size: 1.1em;
+      }
+
+      .command-box {
+        background: #2c3e50;
+        color: #2ecc71;
+        padding: 20px;
+        border-radius: 10px;
+        font-family: "Courier New", monospace;
+        margin: 15px 0;
+        overflow-x: auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 1.5s ease-in;
+      }
+
+      .command-box::before {
+        content: "$ ";
+        color: #3498db;
+      }
+
+      .movie-reference {
+        background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+        border-radius: 15px;
+        padding: 25px;
+        margin: 20px 0;
+        color: #2c3e50;
+        font-size: 1.2em;
+        border-left: 5px solid #e67e22;
+      }
+
+      .floating {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideRight {
+        from {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .emoji {
+        font-size: 2em;
+        display: inline-block;
+        animation: rotate 3s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .github-flow {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .flow-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        animation: fadeIn 1s ease-in;
+      }
+
+      .flow-card:hover {
+        transform: translateY(-10px) rotate(2deg);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      .icon {
+        font-size: 3em;
+        margin-bottom: 15px;
+        animation: bounce 2s ease-in-out infinite;
+      }
+
+      .comparison-table {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .comparison-card {
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1.5s ease-in;
+      }
+
+      .git-card {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      }
+
+      .github-card {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      }
+
+      .timeline {
+        position: relative;
+        padding: 30px 0;
+      }
+
+      .timeline-item {
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        border-radius: 15px;
+        padding: 25px;
+        margin: 20px 0;
+        margin-left: 50px;
+        position: relative;
+        animation: slideRight 1s ease-out;
+        color: #2c3e50;
+      }
+
+      .timeline-item::before {
+        content: "⭐";
+        position: absolute;
+        left: -50px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2em;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .hero-section {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 100%
+        );
+        border-radius: 20px;
+        margin: 30px 0;
+      }
+
+      .hero-emoji {
+        font-size: 5em;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2em;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        margin: 10px;
+      }
+
+      .btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 Git & GitHub ki Duniya 🚀</h1>
+        <div class="shayari">
+          "Code likhne ka shauk tha, version control ka naam nahi pata tha,<br />
+          Git aaya zindagi mein, tab jaake kaam ka kaam ho pata tha!"
+        </div>
+      </div>
+
+      <div class="hero-section">
+        <div class="hero-emoji">💻</div>
+        <h2 style="color: white; font-size: 2em; margin: 20px 0">
+          Version Control - Time Machine for Code!
+        </h2>
+      </div>
+
+      <div class="section">
+        <h2>🎬 Git Kya Hai? - 3 Idiots Style!</h2>
+
+        <div class="movie-reference">
+          <strong>Rancho Style Explanation:</strong><br />
+          "Padhai karo exam ke liye nahi, code karo passion ke liye! Lekin code
+          ko bachane ke liye GIT chahiye!"
+        </div>
+
+        <div class="analogy">
+          <strong>📚 Real Life Analogy:</strong><br />
+          Sochiye aap essay likh rahe ho... pehle draft likha, phir edit kiya,
+          phir aur edit kiya. Ab agar teacher bole "pehla waala draft dikhao",
+          toh kya karoge? <br /><br />
+          <strong>Git = Time Machine!</strong> Har version save kar leta hai! 🕰️
+        </div>
+
+        <div class="joke-box">
+          <strong>😄 Joke Time:</strong><br />
+          Git ka naam Git isliye hai kyunki jab pehli baar use karte ho, tab "I
+          don't GET it!" 😂
+        </div>
+
+        <div class="comparison-table">
+          <div class="comparison-card git-card">
+            <div class="icon">📦</div>
+            <h3>GIT</h3>
+            <p style="margin-top: 15px">
+              Aapke computer ka software<br />Version Control System<br />Offline
+              kaam karta hai
+            </p>
+          </div>
+          <div class="comparison-card github-card">
+            <div class="icon">☁️</div>
+            <h3>GITHUB</h3>
+            <p style="margin-top: 15px">
+              Internet pe website<br />Code ka Google Drive<br />Online
+              collaboration
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🌳 Git Workflow - Sacred Games ki Tarah!</h2>
+
+        <div class="movie-reference">
+          <strong>Sartaj ki Investigation ki tarah:</strong><br />
+          Har clue (commit) important hai! Peeche jao, sab pata chal jayega!
+        </div>
+
+        <div class="git-workflow">
+          <div class="workflow-step">
+            <div class="icon floating">📝</div>
+            <h3>Working Directory</h3>
+            <p>Aap yahan code likhte ho</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="workflow-step">
+            <div class="icon floating">📦</div>
+            <h3>Staging Area</h3>
+            <p>Ready ho gaya bhejne ke liye</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="workflow-step">
+            <div class="icon floating">✅</div>
+            <h3>Repository</h3>
+            <p>Permanently save!</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="workflow-step">
+            <div class="icon floating">☁️</div>
+            <h3>GitHub</h3>
+            <p>Cloud pe backup</p>
+          </div>
+        </div>
+
+        <div class="analogy">
+          <strong>🎯 Railway Station Analogy:</strong><br />
+          <strong>Working Directory</strong> = Ghar (jahan aap taiyaar ho rahe
+          ho)<br />
+          <strong>Staging Area</strong> = Platform pe khade ho (ticket check)<br />
+          <strong>Repository</strong> = Train mein baithna (journey start!)<br />
+          <strong>GitHub</strong> = Destination pe pohochna (everyone can see!)
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎨 Basic Git Commands - Mirzapur Style!</h2>
+
+        <div class="movie-reference">
+          <strong>Kaleen Bhaiya kehte hain:</strong><br />
+          "Hamare zamane mein commands sikhna padta tha!"
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>git init</strong> - Naya business shuru karo! 🏪<br />
+            <div class="command-box">git init</div>
+            Matlab: Apne folder ko Git repository bana do!
+          </div>
+
+          <div class="timeline-item">
+            <strong>git add</strong> - Maal tayaar karo! 📦<br />
+            <div class="command-box">git add filename.txt<br />git add .</div>
+            Matlab: Files ko staging area mein daal do!
+          </div>
+
+          <div class="timeline-item">
+            <strong>git commit</strong> - Deal final! 🤝<br />
+            <div class="command-box">git commit -m "Message yahan likho"</div>
+            Matlab: Changes ko permanently save karo with message!
+          </div>
+
+          <div class="timeline-item">
+            <strong>git status</strong> - Haalat kya hai? 🔍<br />
+            <div class="command-box">git status</div>
+            Matlab: Dekho kya-kya change hua hai!
+          </div>
+
+          <div class="timeline-item">
+            <strong>git log</strong> - Purani history! 📜<br />
+            <div class="command-box">git log</div>
+            Matlab: Saare commits ka record!
+          </div>
+        </div>
+
+        <div class="joke-box">
+          <strong>😄 Programmer Joke:</strong><br />
+          Wife: "Tumne mujhe commit kiya?"<br />
+          Husband (Programmer): "Haan, but I forgot to push!" 😂
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🌿 Branches - Ludo King Strategy!</h2>
+
+        <div class="analogy">
+          <strong>🎮 Ludo Analogy:</strong><br />
+          Main branch = Safe zone<br />
+          Feature branches = Risky moves (agar galat ho gaya toh wapas aa jao!)
+        </div>
+
+        <div class="tree-diagram">
+          <div
+            class="branch"
+            style="
+              background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+              color: white;
+            "
+          >
+            <strong>MAIN BRANCH (Master)</strong><br />
+            Production Code - Touch nahi karte!
+          </div>
+          <div style="font-size: 3em; margin: 10px">⬇️</div>
+          <div
+            style="
+              display: flex;
+              justify-content: space-around;
+              width: 100%;
+              flex-wrap: wrap;
+            "
+          >
+            <div class="branch">
+              <div class="commit">C1</div>
+              Feature 1<br />(Login Page)
+            </div>
+            <div class="branch">
+              <div class="commit">C2</div>
+              Feature 2<br />(Payment)
+            </div>
+            <div class="branch">
+              <div class="commit">C3</div>
+              Bug Fix<br />(Header Issue)
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>git branch</strong> - Naya rasta banao! 🛤️<br />
+            <div class="command-box">git branch feature-login</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>git checkout</strong> - Rasta badlo! 🔄<br />
+            <div class="command-box">git checkout feature-login</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>git merge</strong> - Raaste mila do! 🤝<br />
+            <div class="command-box">git merge feature-login</div>
+          </div>
+        </div>
+
+        <div class="movie-reference">
+          <strong>Dil Chahta Hai Style:</strong><br />
+          Main branch = Akash (serious, stable)<br />
+          Feature branches = Sameer aur Sid (experimental, fun!)
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>☁️ GitHub - Facebook for Code!</h2>
+
+        <div class="analogy">
+          <strong>Social Media Analogy:</strong><br />
+          GitHub = Instagram for developers<br />
+          Repository = Your profile<br />
+          Commits = Posts<br />
+          Stars = Likes<br />
+          Fork = Repost<br />
+          Pull Request = Collaboration request!
+        </div>
+
+        <div class="github-flow">
+          <div class="flow-card">
+            <div class="icon">🍴</div>
+            <h3>Fork</h3>
+            <p>Dusre ka code apne account mein copy karo!</p>
+          </div>
+          <div class="flow-card">
+            <div class="icon">📥</div>
+            <h3>Clone</h3>
+            <p>Repository apne computer pe download karo!</p>
+          </div>
+          <div class="flow-card">
+            <div class="icon">📤</div>
+            <h3>Push</h3>
+            <p>Apne changes GitHub pe bhejo!</p>
+          </div>
+          <div class="flow-card">
+            <div class="icon">📩</div>
+            <h3>Pull Request</h3>
+            <p>Bolo "Mera code merge kar do please!"</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>git remote add origin</strong> - GitHub se connect! 🔗<br />
+            <div class="command-box">
+              git remote add origin https://github.com/username/repo.git
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>git push</strong> - Code bhejo cloud pe! 🚀<br />
+            <div class="command-box">git push origin main</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>git pull</strong> - Latest code lao! ⬇️<br />
+            <div class="command-box">git pull origin main</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>git clone</strong> - Pura repo download! 📦<br />
+            <div class="command-box">
+              git clone https://github.com/username/repo.git
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎭 Merge Conflicts - Bollywood Drama!</h2>
+
+        <div class="movie-reference">
+          <strong>K3G Style:</strong><br />
+          "Yeh conflict nahi hona chahiye tha... lekin ho gaya!"<br />
+          "Koi baat nahi, resolve kar lenge!"
+        </div>
+
+        <div class="visual-box">
+          <h3 style="text-align: center; color: white; margin-bottom: 20px">
+            Conflict Resolution Flow
+          </h3>
+          <div
+            style="
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              flex-wrap: wrap;
+            "
+          >
+            <div class="commit">A</div>
+            <div style="font-size: 2em; color: white">→</div>
+            <div class="commit">B</div>
+            <div style="font-size: 2em; color: white">→</div>
+            <div style="text-align: center">
+              <div
+                class="commit"
+                style="
+                  background: linear-gradient(135deg, #f5576c 0%, #c0392b 100%);
+                "
+              >
+                ❌
+              </div>
+              <p style="color: white; margin-top: 10px">CONFLICT!</p>
+            </div>
+            <div style="font-size: 2em; color: white">→</div>
+            <div style="text-align: center">
+              <div
+                class="commit"
+                style="
+                  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+                "
+              >
+                ✅
+              </div>
+              <p style="color: white; margin-top: 10px">RESOLVED!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="joke-box">
+          <strong>😄 Conflict Joke:</strong><br />
+          Merge conflict = Gharelu jhagda<br />
+          Solution = Baat karke compromise! 😊
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🏆 Pro Tips - Masterclass!</h2>
+
+        <div class="github-flow">
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            "
+          >
+            <div class="icon">💾</div>
+            <h3>Commit Often</h3>
+            <p>Chhote chhote commits - Better than ek bada!</p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            "
+          >
+            <div class="icon">📝</div>
+            <h3>Clear Messages</h3>
+            <p>
+              Commit message clear likho - "Fixed bug" nahi, "Fixed login button
+              crash"
+            </p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            "
+          >
+            <div class="icon">🔄</div>
+            <h3>Pull Before Push</h3>
+            <p>Hamesha pehle PULL karo, phir PUSH!</p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            "
+          >
+            <div class="icon">🌿</div>
+            <h3>Branch Strategy</h3>
+            <p>Main branch ko directly touch mat karo!</p>
+          </div>
+        </div>
+
+        <div class="shayari" style="background: rgba(255, 255, 255, 0.2)">
+          "Git mein commit karo din mein teen baar,<br />
+          Push karo shaam ko, bina koi takraar,<br />
+          Branch banao features ke liye har baar,<br />
+          Tabhi milega success ka asli pyaar!"
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎯 Complete Workflow - Taarak Mehta Style!</h2>
+
+        <div class="movie-reference">
+          <strong>Jethalal ki Dukaan ki tarah:</strong><br />
+          Step by step, organized, aur sab kuch documented! 📋
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>Step 1:</strong> Git install karo (ek baar) 🔧
+          </div>
+          <div class="timeline-item">
+            <strong>Step 2:</strong> GitHub account banao 👤
+          </div>
+          <div class="timeline-item">
+            <strong>Step 3:</strong> Naya repo banao GitHub pe 📁
+          </div>
+          <div class="timeline-item">
+            <strong>Step 4:</strong> Local folder mein git init karo 🎯
+            <div class="command-box">git init</div>
+          </div>
+          <div class="timeline-item">
+            <strong>Step 5:</strong> Files add karo 📝
+            <div class="command-box">git add .</div>
+          </div>
+          <div class="timeline-item">
+            <strong>Step 6:</strong> Commit karo message ke saath ✅
+            <div class="command-box">
+              git commit -m "First commit - Project start!"
+            </div>
+          </div>
+          <div class="timeline-item">
+            <strong>Step 7:</strong> Remote add karo 🔗
+            <div class="command-box">git remote add origin URL</div>
+          </div>
+          <div class="timeline-item">
+            <strong>Step 8:</strong> Push karo cloud pe! 🚀
+            <div class="command-box">git push -u origin main</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎪 Final Shayari!</h2>
+        <div
+          class="shayari"
+          style="
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-size: 1.8em;
+          "
+        >
+          "Code likho, commit karo, push karo har din,<br />
+          Git aur GitHub se banao apni pehchaan!<br />
+          Version control ka jaadu hai, code bachane ka armaan,<br />
+          Developers ki duniya mein, yahi hai asli shaan!"
+        </div>
+      </div>
+
+      <div
+        class="section"
+        style="
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+        "
+      >
+        <h2 style="color: white; border-color: white">
+          🎊 Revision Time - Quick Recap!
+        </h2>
+
+        <div class="github-flow">
+          <div class="flow-card" style="background: rgba(255, 255, 255, 0.2)">
+            <div class="icon">🎯</div>
+            <h3>Git = Software</h3>
+            <p>Apne computer pe version control</p>
+          </div>
+          <div class="flow-card" style="background: rgba(255, 255, 255, 0.2)">
+            <div class="icon">☁️</div>
+            <h3>GitHub = Website</h3>
+            <p>Code share karo duniya ke saath</p>
+          </div>
+          <div class="flow-card" style="background: rgba(255, 255, 255, 0.2)">
+            <div class="icon">📦</div>
+            <h3>Repository = Folder</h3>
+            <p>Jahan saara code rehta hai</p>
+          </div>
+          <div class="flow-card" style="background: rgba(255, 255, 255, 0.2)">
+            <div class="icon">✅</div>
+            <h3>Commit = Save</h3>
+            <p>Checkpoint banao apne code ka</p>
+          </div>
+          <div class="flow-card" style="background: rgba(255, 255, 255, 0.2)">
+            <div class="icon">🌿</div>
+            <h3>Branch = Copy</h3>
+            <p>Experiment karo bina dare</p>
+          </div>
+          <div class="flow-card" style="background: rgba(255, 255, 255, 0.2)">
+            <div class="icon">🤝</div>
+            <h3>Merge = Combine</h3>
+            <p>Do branches ko mila do</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎬 Real-Life Success Story!</h2>
+
+        <div class="movie-reference">
+          <strong>Shark Tank India ki tarah:</strong><br />
+          "Aapke startup ka code Git pe hai? Good!<br />
+          GitHub pe public repo? Excellent!<br />
+          Proper documentation? Outstanding!<br />
+          Mujhe interest hai aapke business mein!" 🦈
+        </div>
+
+        <div class="analogy">
+          <strong>💼 Career Mein Fayda:</strong><br />
+          ✨ GitHub = Aapka online portfolio<br />
+          ✨ Open Source Contribution = Experience certificate<br />
+          ✨ Good Git history = Professional discipline<br />
+          ✨ Companies sirf GitHub profile dekh ke hire karti hain!
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🔥 Common Mistakes - Bachke Rehna!</h2>
+
+        <div class="github-flow">
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+            "
+          >
+            <div class="icon">❌</div>
+            <h3>Mistake 1</h3>
+            <p>Bina pull kiye direct push karna!</p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+            "
+          >
+            <div class="icon">❌</div>
+            <h3>Mistake 2</h3>
+            <p>Commit message: "abc" ya "test" likhna</p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+            "
+          >
+            <div class="icon">❌</div>
+            <h3>Mistake 3</h3>
+            <p>Main branch pe directly kaam karna</p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+            "
+          >
+            <div class="icon">❌</div>
+            <h3>Mistake 4</h3>
+            <p>Passwords aur API keys commit karna</p>
+          </div>
+        </div>
+
+        <div class="joke-box">
+          <strong>😄 Developer Horror Story:</strong><br />
+          Naya developer: "Main ne git push -f kar diya..."<br />
+          Senior developer: "Tu job chhod de..." 😱<br />
+          (Force push kabhi mat karo production mein!)
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎨 Git Commands Cheat Sheet - Cricket Analogy!</h2>
+
+        <div class="visual-box">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: 20px;
+              color: white;
+            "
+          >
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>🏏 Batting (Start)</h3>
+              <div class="command-box">git init</div>
+              <p>Khel shuru! New innings!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>🎯 Shot Played (Add)</h3>
+              <div class="command-box">git add file.txt</div>
+              <p>Ball kheli, runs ready!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>✅ Run Scored (Commit)</h3>
+              <div class="command-box">git commit -m "4 runs!"</div>
+              <p>Scoreboard pe chadha!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>📊 Scoreboard (Status)</h3>
+              <div class="command-box">git status</div>
+              <p>Current score dekho!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>📺 Replay (Log)</h3>
+              <div class="command-box">git log</div>
+              <p>Har ball ki history!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>🌿 New Player (Branch)</h3>
+              <div class="command-box">git branch feature</div>
+              <p>Naya batsman!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>🔄 Switch Player (Checkout)</h3>
+              <div class="command-box">git checkout feature</div>
+              <p>Batting order change!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>🤝 Team Up (Merge)</h3>
+              <div class="command-box">git merge feature</div>
+              <p>Partnership bana lo!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>📤 Stadium Display (Push)</h3>
+              <div class="command-box">git push origin main</div>
+              <p>Duniya ko dikhao score!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>📥 Updates (Pull)</h3>
+              <div class="command-box">git pull origin main</div>
+              <p>Latest score lao!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>📋 Squad Copy (Clone)</h3>
+              <div class="command-box">git clone URL</div>
+              <p>Puri team copy karo!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>🍴 New Team (Fork)</h3>
+              <div class="command-box">Fork on GitHub</div>
+              <p>Apni franchise banao!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎭 GitHub Features - OTT Platforms ki tarah!</h2>
+
+        <div class="analogy">
+          <strong>Netflix vs GitHub:</strong><br />
+          Netflix pe shows dekhte ho → GitHub pe code dekhte ho<br />
+          Netflix pe review dete ho → GitHub pe stars dete ho<br />
+          Netflix pe download karte ho → GitHub se clone karte ho<br />
+          Netflix pe share karte ho → GitHub pe fork karte ho!
+        </div>
+
+        <div class="github-flow">
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            "
+          >
+            <div class="icon">⭐</div>
+            <h3>Stars</h3>
+            <p>Pasand aaya? Star de do! Like button hai ye!</p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            "
+          >
+            <div class="icon">👁️</div>
+            <h3>Watch</h3>
+            <p>Notifications chahiye? Watch kar lo!</p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            "
+          >
+            <div class="icon">🍴</div>
+            <h3>Fork</h3>
+            <p>Apne account mein copy! Modify kar sakte ho!</p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            "
+          >
+            <div class="icon">📝</div>
+            <h3>Issues</h3>
+            <p>Bug mila? Issue kholo! Complaint box hai!</p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            "
+          >
+            <div class="icon">🔀</div>
+            <h3>Pull Request</h3>
+            <p>Contribution karo! Team mein join!</p>
+          </div>
+          <div
+            class="flow-card"
+            style="
+              background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            "
+          >
+            <div class="icon">📖</div>
+            <h3>README</h3>
+            <p>Project ki story! Kya hai, kaise use kare!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🚀 Advanced Concepts - Level Up!</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>Git Stash - Kaam ruko, baad mein karenge! 💼</strong><br />
+            <div class="command-box">git stash<br />git stash pop</div>
+            <div class="analogy">
+              Jaise tiffin mein khana rakh diya, baad mein khayenge!
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>Git Reset - Galti ho gayi, wapas jao! ⏮️</strong><br />
+            <div class="command-box">
+              git reset HEAD~1<br />git reset --hard commit_id
+            </div>
+            <div class="movie-reference">
+              Doctor Strange ki tarah - Time stone use karo!
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>Git Revert - Undo safely! 🔙</strong><br />
+            <div class="command-box">git revert commit_id</div>
+            <div class="analogy">Jaise WhatsApp message delete kar diya!</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>Git Cherry-Pick - Sirf ek commit chahiye! 🍒</strong><br />
+            <div class="command-box">git cherry-pick commit_id</div>
+            <div class="analogy">Buffet mein se sirf ek dish le lo!</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>.gitignore - Kuch files nahi chahiye! 🚫</strong><br />
+            <div class="command-box">
+              # .gitignore file mein<br />node_modules/<br />*.log<br />.env
+            </div>
+            <div class="analogy">
+              Jaise kachra dustbin mein! Track nahi karna!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>💡 Pro Gamer Moves - Shortcuts!</h2>
+
+        <div class="visual-box">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 15px;
+              color: white;
+            "
+          >
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.15);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>⚡ Combo Move 1</h3>
+              <div class="command-box">git add . && git commit -m "msg"</div>
+              <p>Ek saath do kaam!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.15);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>⚡ Combo Move 2</h3>
+              <div class="command-box">git commit -am "msg"</div>
+              <p>Add + Commit together!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.15);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>⚡ Combo Move 3</h3>
+              <div class="command-box">git checkout -b feature</div>
+              <p>Branch banao aur switch bhi!</p>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.15);
+                padding: 20px;
+                border-radius: 10px;
+              "
+            >
+              <h3>⚡ Undo Shortcut</h3>
+              <div class="command-box">git checkout -- filename</div>
+              <p>File ko pehle jaisa kar do!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="joke-box">
+          <strong>😄 Git Pro Joke:</strong><br />
+          Junior: "Ye shortcut kahan se seekhe?"<br />
+          Senior: "Beta, raat raat bhar stackoverflow pe padha karte the!" 😎
+        </div>
+      </div>
+
+      <div
+        class="section"
+        style="
+          background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+          color: #2c3e50;
+        "
+      >
+        <h2>🎊 Congratulations! Ab Tum Git Master Ho! 🎊</h2>
+
+        <div style="text-align: center; margin: 30px 0">
+          <div class="hero-emoji" style="font-size: 4em">🏆</div>
+          <h3 style="font-size: 2em; margin: 20px 0">Final Words of Wisdom</h3>
+        </div>
+
+        <div
+          class="shayari"
+          style="
+            background: rgba(255, 255, 255, 0.3);
+            font-size: 1.6em;
+            color: #2c3e50;
+          "
+        >
+          "Git seekhi, GitHub samjha, ab coding ka maza aayega,<br />
+          Commit karo roz, push karo shaam ko, career ka raasta mil jayega!<br />
+          Branch banao fearlessly, merge karo carefully,<br />
+          Open source mein contribute karo, duniya tumhe pehchan legi surely!"
+        </div>
+
+        <div
+          style="
+            margin: 30px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+          "
+        >
+          <h3 style="text-align: center; font-size: 1.8em; margin-bottom: 20px">
+            📚 Remember These Golden Rules:
+          </h3>
+          <div style="font-size: 1.2em; line-height: 2">
+            ✅ Har din commit karo - consistency is key!<br />
+            ✅ Clear messages likho - future mein kaam aayega!<br />
+            ✅ Main branch ko touch mat karo - branches use karo!<br />
+            ✅ Pull karo before push - conflicts kam honge!<br />
+            ✅ README acchi likho - presentation matters!<br />
+            ✅ .gitignore use karo - secrets safe rakho!<br />
+            ✅ Open source contribute karo - community matters!<br />
+            ✅ GitHub profile ko portfolio samjho - jobs milti hain!
+          </div>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0">
+          <button
+            class="btn"
+            onclick="alert('🎉 Chalo ab practice karte hain! Terminal kholo aur shuru karo!')"
+          >
+            Start Your Git Journey!
+          </button>
+          <button
+            class="btn"
+            onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+          >
+            Wapas Upar Jao
+          </button>
+        </div>
+
+        <div
+          class="movie-reference"
+          style="text-align: center; font-size: 1.3em; margin-top: 30px"
+        >
+          <strong>🎬 Last Quote - 3 Idiots Style:</strong><br />
+          "Git ko pyaar se samjho, darr ke saath nahi...<br />
+          Safalta zaroor milegi, bhale hi late ho jaye!" 🚀
+        </div>
+      </div>
+
+      <div
+        style="
+          text-align: center;
+          padding: 40px;
+          background: rgba(0, 0, 0, 0.3);
+          border-radius: 20px;
+          margin-top: 30px;
+        "
+      >
+        <h3 style="font-size: 2em; color: white; margin-bottom: 20px">
+          🌟 Ab Practice Karo, Master Bano! 🌟
+        </h3>
+        <p style="font-size: 1.3em; color: white">
+          Happy Coding! Keep Committing! Keep Learning! 💻
+        </p>
+        <div style="font-size: 3em; margin-top: 20px" class="floating">
+          🎯🚀💪
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Add some interactive animations
+      document.querySelectorAll(".workflow-step").forEach((step, index) => {
+        step.addEventListener("click", function () {
+          this.style.transform = "scale(1.1) rotate(5deg)";
+          setTimeout(() => {
+            this.style.transform = "scale(1)";
+          }, 300);
+        });
+      });
+
+      document.querySelectorAll(".commit").forEach((commit) => {
+        commit.addEventListener("click", function () {
+          this.style.animation = "none";
+          setTimeout(() => {
+            this.style.animation = "pulse 2s ease-in-out infinite";
+          }, 10);
+        });
+      });
+
+      // Add confetti effect on buttons
+      document.querySelectorAll(".btn").forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          const rect = this.getBoundingClientRect();
+          for (let i = 0; i < 20; i++) {
+            createConfetti(rect.left + rect.width / 2, rect.top);
+          }
+        });
+      });
+
+      function createConfetti(x, y) {
+        const confetti = document.createElement("div");
+        confetti.style.position = "fixed";
+        confetti.style.width = "10px";
+        confetti.style.height = "10px";
+        confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confetti.style.left = x + "px";
+        confetti.style.top = y + "px";
+        confetti.style.borderRadius = "50%";
+        confetti.style.pointerEvents = "none";
+        confetti.style.zIndex = "10000";
+        document.body.appendChild(confetti);
+
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = 5 + Math.random() * 5;
+        let vx = Math.cos(angle) * velocity;
+        let vy = Math.sin(angle) * velocity - 10;
+        let posX = x;
+        let posY = y;
+
+        const animation = setInterval(() => {
+          vy += 0.5;
+          posX += vx;
+          posY += vy;
+          confetti.style.left = posX + "px";
+          confetti.style.top = posY + "px";
+          confetti.style.opacity =
+            parseFloat(confetti.style.opacity || 1) - 0.02;
+
+          if (
+            posY > window.innerHeight ||
+            parseFloat(confetti.style.opacity) <= 0
+          ) {
+            clearInterval(animation);
+            confetti.remove();
+          }
+        }, 20);
+      }
+
+      // Smooth scroll for all internal links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Properties Demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #667eea;
+            font-size: 2.5rem;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .demo-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .demo-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #495057;
+        }
+
+        .demo-element {
+            margin: 20px 0;
+        }
+
+        /* ::BEFORE AND ::AFTER EXAMPLES */
+        
+        /* 1. Adding Content */
+        .quote-box {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            font-style: italic;
+            border-left: 4px solid #ffc107;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: #ffc107;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-weight: bold;
+        }
+
+        .quote-box::after {
+            content: '"';
+            font-size: 4rem;
+            color: #ffc107;
+            position: absolute;
+            bottom: -40px;
+            right: 10px;
+            font-weight: bold;
+        }
+
+        /* 2. Creating Decorative Elements */
+        .decorative-heading {
+            text-align: center;
+            position: relative;
+            font-size: 1.5rem;
+            color: #667eea;
+            margin: 30px 0;
+        }
+
+        .decorative-heading::before,
+        .decorative-heading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .decorative-heading::before {
+            left: -70px;
+        }
+
+        .decorative-heading::after {
+            right: -70px;
+        }
+
+        /* 3. Overlay Effects */
+        .overlay-card {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overlay-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease;
+        }
+
+        .overlay-card:hover::before {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .overlay-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 4. Shape Creation */
+        .arrow-button {
+            background: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .arrow-button::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid #28a745;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .arrow-button:hover {
+            background: #218838;
+        }
+
+        .arrow-button:hover::after {
+            border-left-color: #218838;
+            right: -20px;
+        }
+
+        /* 5. Loading Animation */
+        .loading-button {
+            background: #6c757d;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .loading-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 2s ease-in-out;
+        }
+
+        .loading-button:hover::before {
+            left: 100%;
+        }
+
+        /* TRANSFORM AND TRANSLATE EXAMPLES */
+
+        /* 1. Basic Transform Examples */
+        .transform-demo {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .transform-box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .rotate:hover {
+            transform: rotate(45deg);
+        }
+
+        .scale:hover {
+            transform: scale(1.3);
+        }
+
+        .skew:hover {
+            transform: skewX(15deg);
+        }
+
+        .translate-x:hover {
+            transform: translateX(30px);
+        }
+
+        .translate-y:hover {
+            transform: translateY(-30px);
+        }
+
+        .combine:hover {
+            transform: translateX(20px) rotate(15deg) scale(1.1);
+        }
+
+        /* 2. Centering with Transform */
+        .center-demo {
+            position: relative;
+            height: 200px;
+            background: #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .centered-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #dc3545;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* 3. 3D Transform */
+        .card-3d {
+            width: 200px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            border-radius: 15px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+            cursor: pointer;
+            margin: 20px auto;
+        }
+
+        .card-3d:hover {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            backface-visibility: hidden;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            transform: rotateY(180deg);
+        }
+
+        /* 4. Animation Examples */
+        .floating-element {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #48cae4, #0077be);
+            border-radius: 50%;
+            margin: 20px auto;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .sliding-element {
+            width: 100px;
+            height: 20px;
+            background: linear-gradient(45deg, #f72585, #b5179e);
+            border-radius: 10px;
+            animation: slide 2s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(-50px); }
+            100% { transform: translateX(250px); }
+        }
+
+        .code-block {
+            background: #1a1a1a;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            color: #50fa7b;
+        }
+
+        .property {
+            color: #ff79c6;
+        }
+
+        .value {
+            color: #8be9fd;
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .transform-demo {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .decorative-heading::before,
+            .decorative-heading::after {
+                width: 30px;
+            }
+            
+            .decorative-heading::before {
+                left: -40px;
+            }
+            
+            .decorative-heading::after {
+                right: -40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS ::before, ::after, transform & translate Guide</h1>
+
+        <!-- BEFORE AND AFTER SECTION -->
+        <div class="section">
+            <h2 class="section-title">1. ::before and ::after Pseudo-elements</h2>
+            
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h3 class="demo-title">Adding Content</h3>
+                    <div class="quote-box">
+                        This is a quote with decorative quotation marks added using ::before and ::after
+                    </div>
+                    <div class="code-block">
+<span class="highlight">.quote-box::before</span> {
+  <span class="property">content</span>: <span class="value">'"'</span>;
+  <span class="property">position</span>: <span class="value">absolute</span>;
+  <span class="property">font-size</span>: <span class="value">4rem</span>;
+}
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3 class="demo-title">Decorative Elements</h3>
+                    <div class="decorative-heading">Styled Heading</div>
+                    <div class="code-block">
+<span class="highlight">.decorative-heading::before</span>,
+<span class="highlight">.decorative-heading::after</span> {
+  <span class="property">content</span>: <span class="value">''</span>;
+  <span class="property">width</span>: <span class="value">50px</span>;
+  <span class="property">height</span>: <span class="value">2px</span>;
+  <span class="property">background</span>: <span class="value">linear-gradient(...)</span>;
+}
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3 class="demo-title">Overlay Effects</h3>
+                    <div class="overlay-card">
+                        <h4>Hover for overlay change</h4>
+                        <p>The overlay darkens/lightens on hover</p>
+                    </div>
+                    <div class="code-block">
+<span class="highlight">.overlay-card::before</span> {
+  <span class="property">content</span>: <span class="value">''</span>;
+  <span class="property">background</span>: <span class="value">rgba(0,0,0,0.3)</span>;
+  <span class="property">position</span>: <span class="value">absolute</span>;
+  <span class="property">inset</span>: <span class="value">0</span>;
+}
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3 class="demo-title">Shape Creation</h3>
+                    <button class="arrow-button">Click Me</button>
+                    <div class="code-block">
+<span class="highlight">.arrow-button::after</span> {
+  <span class="property">content</span>: <span class="value">''</span>;
+  <span class="property">border-left</span>: <span class="value">15px solid #28a745</span>;
+  <span class="property">border-top</span>: <span class="value">15px solid transparent</span>;
+  <span class="property">border-bottom</span>: <span class="value">15px solid transparent</span>;
+}
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3 class="demo-title">Loading Animation</h3>
+                    <button class="loading-button">Hover for shine effect</button>
+                    <div class="code-block">
+<span class="highlight">.loading-button::before</span> {
+  <span class="property">background</span>: <span class="value">linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)</span>;
+  <span class="property">left</span>: <span class="value">-100%</span>;
+}
+<span class="highlight">:hover::before</span> { <span class="property">left</span>: <span class="value">100%</span>; }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRANSFORM AND TRANSLATE SECTION -->
+        <div class="section">
+            <h2 class="section-title">2. Transform and Translate Properties</h2>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Basic Transform Effects (Hover to see effects)</h3>
+                <div class="transform-demo">
+                    <div class="transform-box rotate">Rotate</div>
+                    <div class="transform-box scale">Scale</div>
+                    <div class="transform-box skew">Skew</div>
+                    <div class="transform-box translate-x">Move X</div>
+                    <div class="transform-box translate-y">Move Y</div>
+                    <div class="transform-box combine">Combined</div>
+                </div>
+                <div class="code-block">
+<span class="highlight">.rotate:hover</span> { <span class="property">transform</span>: <span class="value">rotate(45deg)</span>; }
+<span class="highlight">.scale:hover</span> { <span class="property">transform</span>: <span class="value">scale(1.3)</span>; }
+<span class="highlight">.translate-x:hover</span> { <span class="property">transform</span>: <span class="value">translateX(30px)</span>; }
+<span class="highlight">.combine:hover</span> { <span class="property">transform</span>: <span class="value">translateX(20px) rotate(15deg) scale(1.1)</span>; }
+                </div>
+            </div>
+
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h3 class="demo-title">Perfect Centering</h3>
+                    <div class="center-demo">
+                        <div class="centered-box">Perfectly Centered!</div>
+                    </div>
+                    <div class="code-block">
+<span class="highlight">.centered-box</span> {
+  <span class="property">position</span>: <span class="value">absolute</span>;
+  <span class="property">top</span>: <span class="value">50%</span>;
+  <span class="property">left</span>: <span class="value">50%</span>;
+  <span class="property">transform</span>: <span class="value">translate(-50%, -50%)</span>;
+}
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3 class="demo-title">3D Card Flip (Hover)</h3>
+                    <div class="card-3d">
+                        <div class="card-face">Front Side</div>
+                        <div class="card-face card-back">Back Side</div>
+                    </div>
+                    <div class="code-block">
+<span class="highlight">.card-3d:hover</span> {
+  <span class="property">transform</span>: <span class="value">rotateY(180deg)</span>;
+}
+<span class="highlight">.card-back</span> {
+  <span class="property">transform</span>: <span class="value">rotateY(180deg)</span>;
+}
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3 class="demo-title">Animations with Transform</h3>
+                    <div class="floating-element"></div>
+                    <div class="sliding-element"></div>
+                    <div class="code-block">
+<span class="highlight">@keyframes float</span> {
+  <span class="value">0%, 100%</span> { <span class="property">transform</span>: <span class="value">translateY(0px)</span>; }
+  <span class="value">50%</span> { <span class="property">transform</span>: <span class="value">translateY(-20px)</span>; }
+}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- USE CASES SECTION -->
+        <div class="section">
+            <h2 class="section-title">3. Common Use Cases & Best Practices</h2>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Key Points to Remember:</h3>
+                <div style="line-height: 1.8; font-size: 1rem;">
+                    <p><strong>::before and ::after:</strong></p>
+                    <ul style="margin: 10px 0 20px 20px;">
+                        <li>Must have <code>content</code> property (even if empty '')</li>
+                        <li>Are inline by default, use <code>display: block</code> if needed</li>
+                        <li>Perfect for decorative elements, tooltips, icons</li>
+                        <li>Don't affect document semantics or accessibility</li>
+                        <li>Can't be selected by users</li>
+                    </ul>
+                    
+                    <p><strong>Transform & Translate:</strong></p>
+                    <ul style="margin: 10px 0 20px 20px;">
+                        <li><code>transform</code> doesn't affect document flow</li>
+                        <li><code>translate(-50%, -50%)</code> is the best way to center elements</li>
+                        <li>Hardware accelerated (better performance than changing top/left)</li>
+                        <li>Can combine multiple transforms: <code>transform: translateX(10px) rotate(45deg) scale(1.2)</code></li>
+                        <li>Use <code>transform-origin</code> to change rotation/scale point</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

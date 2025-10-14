@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selectors Tutorial</title>
+
+    <style>
+      .me::before {
+        content: "[";
+        color: red;
+        font-size: 24px;
+      }
+
+      .me::after {
+        content: "]";
+        color: red;
+        font-size: 24px;
+      }
+
+      .download::before {
+        content: "↓";
+      }
+
+      .download::after {
+        content: "a";
+        color: green;
+      }
+
+      .a::before {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 2px;
+        background: blue;
+        margin-right: 8px;
+      }
+      .a::after {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 2px;
+        background: blue;
+        margin-left: 8px;
+      }
+      .box {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+            circle at top left,
+            red,
+            green,
+            transparent 50%
+          ),
+          radial-gradient(circle at bottom right, purple, pink, transparent 50%);
+        border-radius: 0;
+        margin: 20px;
+        padding: 10;
+        transition: all 5s ease;
+      }
+
+      /* .box:hover {
+        width: 500px;
+        height: 500px;
+        background: red;
+        border-radius: 50%;
+      } */
+    </style>
+  </head>
+  <body>
+    <p class="me">This is Yash</p>
+
+    <button class="download">Download</button>
+
+    <h2 class="a">Yash</h2>
+
+    <div class="box"></div>
+    <div class="box"></div>
+  </body>
+</html>

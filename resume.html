@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yash Tyagi Resume</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              glow: "glow 2s ease-in-out infinite alternate",
+              "slide-up": "slideUp 0.8s ease-out",
+              "fade-in": "fadeIn 1s ease-out",
+              "bounce-in": "bounceIn 0.6s ease-out",
+              "scale-in": "scaleIn 0.5s ease-out",
+              "roate-in": "rotateIn 0.8s ease-out",
+            },
+
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+
+              glow: {
+                "0%": {
+                  boxShadow: "0 0 5px #3b82f6 , 0 0 10px #3b82f6",
+                },
+                "100%": {
+                  boxShadow:
+                    "0 0 10px #3b82f6 , 0 0 20px #3b82f6 , 0 0 30px #3b82f6",
+                },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(100px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              bounceIn: {
+                "0%": { transform: "scale(0.3)", opacity: "0" },
+                "50%": { transform: "scale(1.1)", opacity: "1" },
+                "100%": { transform: "scale(1)" },
+              },
+              scaleIn: {
+                "0%": { transform: "scale(0)", opacity: "0" },
+                "100%": { transform: "scale(1)", opacity: "1" },
+              },
+              rotateIn: {
+                "0%": { transform: "rotate(-180deg) scale(0)", opacity: "0" },
+                "100%": { transform: "rotate(0) scale(1)", opacity: "1" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white overflow-x-hidden"
+  >
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+      <div
+        class="absolute -top-40 -left-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"
+      ></div>
+      <div
+        class="absolute -bottom-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"
+      ></div>
+
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"
+        style="animation-delay: -6s"
+      ></div>
+    </div>
+
+    <!-- Navigation Bar -->
+
+    <nav
+      class="fixed top-0 w-full bg-black bg-opacity-20 backdrop-blur-lg z-50 transition-all duration-300"
+      id="navbar"
+    >
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div
+            class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent animate-glow"
+          >
+            YT
+          </div>
+          <div class="space-x-8 hidden md:flex">
+            <a
+              href="#hero"
+              class="nav-link hover:text-blue-400 transition-colors duration-300"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="nav-link hover:text-blue-400 transition-colors duration-300"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="nav-link hover:text-blue-400 transition-colors duration-300"
+              >Skills</a
+            >
+            <a
+              href="#experience"
+              class="nav-link hover:text-blue-400 transition-colors duration-300"
+              >Experience</a
+            >
+            <a
+              href="#projects"
+              class="nav-link hover:text-blue-400 transition-colors duration-300"
+              >Projects</a
+            >
+
+            <a
+              href="#contact"
+              class="nav-link hover:text-blue-400 transition-colors duration-300"
+              >Contact</a
+            >
+          </div>
+          <button class="md:hidden text-white" id="mobile-btn-menu">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <section
+      id="hero"
+      class="min-h-screen flex items-center justify-center relative"
+    >
+      <div class="text-center z-10">
+        <div
+          class="profile-image mb-8 animate-bounce-in"
+          style="animation-delay: 0.2s"
+        >
+          <div
+            class="w-40 h-40 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1 animate-glow"
+          >
+            <div
+              class="w-full h-full rounded-full bg-gray-300 flex items-center justify-center text-6xl text-gray-700"
+            >
+              👨‍💻
+            </div>
+          </div>
+        </div>
+        <h1
+          class="text-6xl md:text-8xl font-bold mb-4 animate-slide-up"
+          style="animation-delay: 0.4s"
+        >
+          <span
+            class="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+          >
+            Yash Tyagi</span
+          >
+        </h1>
+
+        <p
+          class="text-xl md:text-2xl mb-8 text-gray-300 animate-fade-in"
+          style="animation-delay: 0.6s"
+        >
+          Full Stack Developer | UI/UX Designer
+        </p>
+
+        <div
+          class="flex flex-col md:flex-row justify-center space-y-4 md:space:y-0 md:space-x-6 animate-fade-in"
+          style="animation-delay: 0.8s"
+        >
+          <button
+            class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+          >
+            View My Work
+          </button>
+          <button
+            class="border border-blue-400 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
+          >
+            Download CV
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
+        <div
+          class="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center"
+        >
+          <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-20 relative">
+      <div class="container mx-auto px-6">
+        <h2 class="text-5xl font-bold text-center mb-16 section-title">
+          About Me
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6 about-text">
+            <p class="text-lg text-gray-300 leading-relaxed">
+              I'm Yash Tyagi, a passionate Full Stack Developer and UI/UX
+              Designer with a knack for creating stunning web applications. With
+              expertise in both front-end and back-end technologies, I bring
+              ideas to life through code and design.
+            </p>
+
+            <p class="text-lg text-gray-300 leading-relaxed">
+              When I'm not coding, you'll find me exploring the latest design
+              trends, contributing to open-source projects, or sharing my
+              knowledge through tech blogs and tutorials.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-8">
+              <div class="stat-card bg-white bg-opacity-10 backdrop-blur-lg p-4 text-center transform hover:scale-105 transition-all duration-300">
+               <div class="text-3xl font-bold text-blue-400">50+</div>
+               <div class="text-sm text-gray-300">Project Completed</div>
+
+            </div>
+            <div class="stat-card bg-white bg-opacity-10 backdrop-blur-lg p-4 text-center transform hover:scale-105 transition-all duration-300">
+               <div class="text-3xl font-bold text-blue-400">5+</div>
+               <div class="text-sm text-gray-300">Years Experience</div>
+                
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-8 transform hover:rotate-2 transition-all duration-300">
+            <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl p-6">
+              <div class="text-6xl mb-4">🚀</div>
+              <h3 class="text-2xl font-bold mb-2 ">Innovation Driven</h3>
+              <p class="text-gray-200">Always exploring cutting-edge technologies and pushing the boundaries of what's possible.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-black bg-opacity-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-5xl font-bold text-center mb-16 section-title">
+          Skills & Technologies
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="skill-category bg-gradient-to-br from-blue-900 to-blue-700 rounded-2xl p-8">
+            <div class="text-4xl mb-4">🎨</div>
+            <h3 class="text-2xl font-bold mb-6">Frontend</h3>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>React/Next.js</span>
+                  <span>95%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                  <div class=" skill-bar bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full" style="width: 95%;"></div>
+
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>TypeScript</span>
+                  <span>90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                  <div class=" skill-bar bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full" style="width: 90%;"></div>
+
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>Tailwind CSS</span>
+                  <span>92%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                  <div class=" skill-bar bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full" style="width: 92%;"></div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category bg-gradient-to-br from-purple-900 to-purple-700 rounded-2xl p-8">
+            <div class="text-4xl mb-4">⚙️</div>
+            <h3 class="text-2xl font-bold mb-6">Backend</h3>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>Node Js</span>
+                  <span>88%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                  <div class=" skill-bar bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full" style="width: 88%;"></div>
+
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>Python</span>
+                  <span>85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                  <div class=" skill-bar bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full" style="width: 85%;"></div>
+
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>PostgreSQL</span>
+                  <span>80%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                  <div class=" skill-bar bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full" style="width: 80%;"></div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+           <div class="skill-category bg-gradient-to-br from-pink-900 to-pink-700 rounded-2xl p-8">
+            <div class="text-4xl mb-4">🛠️</div>
+            <h3 class="text-2xl font-bold mb-6">Tools & Others</h3>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>Docker</span>
+                  <span>82%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                  <div class=" skill-bar bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full" style="width: 82%;"></div>
+
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>AWS</span>
+                  <span>78%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                  <div class=" skill-bar bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full" style="width: 78%;"></div>
+
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>Figma</span>
+                  <span>90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                  <div class=" skill-bar bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full" style="width: 90%;"></div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-5xl font-bold text-center mb-16 section-title">
+          Experience
+        </h2>
+        
+          <div class="relative">
+            <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2  h-full w-1 bg-gradient-to-b from-blue-500 to-purple-500"></div>
+
+            <div class="space-y-12">
+              <div class="experience-item flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-8 mb-4 md:mb-0">
+                  <div class="bg-gradient-to-br from-blue-900 to-blue-700 rounded-2xl p-6 transform hover:scale-105 transition-all duration-300">
+                    <div class="text-2xl font-bold mb-2">Senior Full Stack Developer</div>
+                    <div class="text-blue-300 mb-2">TechCorp Inc. | 2022 - Present</div>
+                    <p class="text-gray-300">Led development of microservices architecture, improved performance by 40%, and mentored junior developers.</p>
+                  </div>
+                </div>
+                <div class="relative">
+                  <div class="bg-blue-500 h-8 rounded-full border-4 border-white animate-pulse">
+
+                  </div>
+                  <div class="md:w-1/2 md:pl-8">
+
+                  </div>
+                </div>
+              </div>  
+
+              <div class="experience-item flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-8 ">
+                </div>
+                <div class="relative">
+                  <div class="w-8 h-8 bg-purple-500 rounded-full border-4 border-white animate-pulse">
+
+                  </div>
+                  <div class="bg-gradient-to-br from-purple-900 to-purple-700 rounded-2xl p-6 transform hover:scale-105 transition-all duration-300">
+                    <div class="text-2xl font-bold mb-2">Frontend Developer</div>
+                    <div class="text-purple-300 mb-2">WebSolutions Ltd. | 2020 - 2022</div>
+                    <p class="text-gray-300">Developed responsive web applications using React and Tailwind CSS, enhancing user engagement by 30%.</p>
+                  </div>
+                  
+                </div>
+              </div>
+              
+               <div class="experience-item flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-8 mb-4 md:mb-0">
+                  <div class="bg-gradient-to-br from-blue-900 to-blue-700 rounded-2xl p-6 transform hover:scale-105 transition-all duration-300">
+                    <div class="text-2xl font-bold mb-2">Senior Full Stack Developer</div>
+                    <div class="text-blue-300 mb-2">TechCorp Inc. | 2022 - Present</div>
+                    <p class="text-gray-300">Led development of microservices architecture, improved performance by 40%, and mentored junior developers.</p>
+                  </div>
+                </div>
+                <div class="relative">
+                  <div class="bg-pink-500 h-8 rounded-full border-4 border-white animate-pulse">
+
+                  </div>
+                  <div class="md:w-1/2 md:pl-8">
+
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </div>
+
+
+      </div>
+    </section>
+  </body>
+</html>
